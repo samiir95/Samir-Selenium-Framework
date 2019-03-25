@@ -9,7 +9,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -63,6 +66,16 @@ public class TestBase extends AbstractTestNGCucumberTests{
 			driver = new FirefoxDriver(firefoxOption());
 		}
 		
+		//headless browser test
+		else if (browserName.equalsIgnoreCase("headless")) {
+			DesiredCapabilities caps = new DesiredCapabilities();
+			caps.setJavascriptEnabled(true);
+			caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+					System.getProperty("user.dir") + "/Drivers/phantomjs.exe");
+			String[] phantomJsArgs = {"--web-security=no", "--ignore-ssl-errors=yes"};
+			caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomJsArgs);
+			driver = new PhantomJSDriver(caps);
+		}
 		else if (browserName.equalsIgnoreCase("ie")) {
 			String internetExplorerPath = System.getProperty("user.dir") + "\\Drivers\\IEDriverServer.exe";
 			System.setProperty("webdriver.ie.driver", internetExplorerPath);
