@@ -34,6 +34,7 @@ public class UserRegisterationTest extends TestBase {
 		homeObject.openLoginPage();
 	}
 
+	// Login method
 	@Test(priority = 4, dependsOnMethods = { "registeredUserCanOpenLoginPage" }, enabled = false)
 	public void registeredUserCanLogin() throws InterruptedException {
 		loginObject = new LoginPage(driver);
