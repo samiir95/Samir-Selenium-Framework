@@ -4,7 +4,7 @@
 	<test name="Regression Test" preserve-order="false">
 		<classes>
 			<class name="tests.ContactUsTest" />
-			<class name="tests.UserRegisterationTest" />
+			<class name="tests.UserRegisterationWithDDTAndJavaFaker" />
 			<class name="tests.ProductHoverMenuTest" />
 			<class name="tests.SearchProductTest" />
 			<class name="tests.AddProductToShoppingCartTest" />
