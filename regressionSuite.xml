@@ -5,7 +5,7 @@
 		<classes>
 			<class name="tests.ContactUsTest" />
 			<class name="tests.UserRegisterationWithDDTAndJavaFaker" />
-			<class name="tests.ProductHoverMenuTest" />
+			<class name="ProductHoverMenuTest" />
 		</classes>
 	</test>
 </suite> 
