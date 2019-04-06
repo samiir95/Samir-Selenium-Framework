@@ -2,7 +2,7 @@ package tests;
 
 import org.testng.annotations.Test;
 
-import data.ReadProperities;
+import data.LoadProperities;
 
 import org.testng.AssertJUnit;
 import static org.testng.Assert.assertTrue;
@@ -18,10 +18,10 @@ public class UserRegisterationWithDDTAndProperitiesFile extends TestBase {
 	UserRegisterationPage registerObject;
 	LoginPage loginObject;
 	
-	String fName = ReadProperities.userData.getProperty("firstname");
-	String lName = ReadProperities.userData.getProperty("lastname");
-	String email = ReadProperities.userData.getProperty("email");
-	String pass =  ReadProperities.userData.getProperty("password");
+	String fName = LoadProperities.userData.getProperty("firstname");
+	String lName = LoadProperities.userData.getProperty("lastname");
+	String email = LoadProperities.userData.getProperty("email");
+	String pass =  LoadProperities.userData.getProperty("password");
 
 
 

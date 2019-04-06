@@ -1,13 +1,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="nopcommerce regression parallel suite" parallel="tests" thread-count="2">
+<suite name="nopcommerce regression parallel suite"
+	parallel="tests" thread-count="2">
 	<test name="chrome Regression Test">
 		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="platform" value="Os X 10.9"></parameter>
+
 		<classes>
 			<class name="tests.UserRegisterationParallelTesting" />
 		</classes>
 	</test>
 	<test name="firefox Regression Test">
 		<parameter name="browser" value="firefox"></parameter>
+		<parameter name="platform" value="windows 10"></parameter>
+
 		<classes>
 			<class name="tests.UserRegisterationParallelTesting" />
 		</classes>

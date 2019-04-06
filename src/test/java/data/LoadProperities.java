@@ -5,11 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ReadProperities {
+public class LoadProperities {
 
 	// load the properties file from the folder
 	public static Properties userData = loadProperties(System.getProperty("user.dir")+"\\src\\main\\java\\properities\\userdata.properties");
 
+	public static Properties sauceLabsData = loadProperties(System.getProperty("user.dir")+"\\src\\main\\java\\properities\\sauceLabsUser.properties");
+
+	
 	private static Properties loadProperties(String path) {
 		
 		Properties pro = new Properties();
