@@ -13,10 +13,22 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import data.LoadProperities;
+
+import java.util.Properties;
+
+
 import utilities.Helper;
 
 public class TestBase2 {
 
+	// Sauce Labs Configuration
+	public static final String USERNAME = LoadProperities.sauceLabsData.getProperty("username");
+	public static final String ACCESS_KEY = LoadProperities.sauceLabsData.getProperty("accesskey");
+	public static final String sauceURL = "http://" + USERNAME + ":" + ACCESS_KEY + LoadProperities.sauceLabsData.getProperty("accesskey");
+
+	
+	
 	public static String baseURL = "http://demo.nopcommerce.com/";
 
 	protected ThreadLocal<RemoteWebDriver> driver = null;
@@ -24,13 +36,20 @@ public class TestBase2 {
 
 	@BeforeClass
 	@Parameters(value = { "browser" })
-	public void setUp(@Optional("chrome") String browser) throws MalformedURLException {
+	public void setUp(@Optional("chrome") String browser) throws MalformedURLException  {
 		driver = new ThreadLocal<RemoteWebDriver>();
 		DesiredCapabilities caps = new DesiredCapabilities();
 //		String chromePath = System.getProperty("user.dir") + "\\Drivers\\chromedriver.exe";
 //		System.setProperty("webdriver.chrome.driver", chromePath);
 		caps.setCapability("browserName", browser);
-		driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+		
+		
+		// Selenium Grid Local
+		//driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps));
+		
+		// Run on saucelabs on cloud
+		driver.set(new RemoteWebDriver(new URL(sauceURL), caps));
+		
 		getDriver().navigate().to(baseURL);
 		getDriver().manage().window().maximize();
 	}
